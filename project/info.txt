@@ -17,4 +17,13 @@ npm config get strict-ssl
     ]
   }
 }
+
+----------------------------
+
+{
+    "directory": "<YOUR LIBRARY INSTALL DIRECTORY>",
+    "registry":"http://bower.herokuapp.com"
+}
+
+https://github.com/bower/bower/issues/2360
 #-------------------------------------------------- END   [for .bowerrc] - (13-10-2017 - 10:43:54) }}

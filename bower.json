@@ -1,6 +1,6 @@
 {
-  "name": "mywebpack",
-  "description": "",
+  "name": "flask-react",
+  "description": "my first app with ReactJS and Flask",
   "main": "",
   "license": "MIT",
   "homepage": "",

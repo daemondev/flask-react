@@ -3,7 +3,7 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
 
   // sets initial state
   getInitialState: function(){
-    return { searchString: '' };
+    return { searchString: '', items : [] };
   },
 
   // sets state, triggers render method
@@ -13,9 +13,26 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
     console.log("scope updated!");
   },
 
+  componentWillMount: function() {
+  //loadCommentsFromServer: function() {
+    var xhr = new XMLHttpRequest();
+    xhr.open('get', this.props.url, true);
+    xhr.onload = function() {
+      var data = JSON.parse(xhr.responseText);
+      this.setState({ items: data });
+    }.bind(this);
+    xhr.send();
+  },
+
+  componentDidMount: function() {
+    //this.loadCommentsFromServer();
+    //window.setInterval(this.loadCommentsFromServer, this.props.pollInterval);
+  },
+
   render: function() {
 
-    var countries = this.props.items;
+    //var countries = this.props.items;
+    var countries = this.state.items;
     var searchString = this.state.searchString.trim().toLowerCase();
 
     // filter countries list by value from input box
@@ -29,7 +46,7 @@ var DynamicSearch = React.createClass({displayName: "DynamicSearch",
       React.createElement("div", null, 
         React.createElement("input", {type: "text", value: this.state.searchString, onChange: this.handleChange, placeholder: "Search!"}), 
         React.createElement("ul", null, 
-           countries.map(function(country){ return React.createElement("li", null, country.name, " ") }) 
+           countries.map(function(country){ return React.createElement("li", null, country.name, " | ", country.total) }) 
         )
       )
     )
@@ -45,11 +62,13 @@ var countries = [
   {"name": "Malaysia"}, {"name": "Argentina"}, {"name": "Uganda"}, {"name": "Chile"},
   {"name": "Aruba"}, {"name": "Japan"}, {"name": "Trinidad and Tobago"}, {"name": "Italy"},
   {"name": "Cambodia"}, {"name": "Iceland"}, {"name": "Dominican Republic"}, {"name": "Turkey"},
-  {"name": "Spain"}, {"name": "Poland"}, {"name": "Haiti"}
+  {"name": "Spain"}, {"name": "Poland"}, {"name": "Haiti"}, {"name": "Rusia"}
 ];
 
 ReactDOM.render(
-  React.createElement(DynamicSearch, {items:  countries }),
+  //<DynamicSearch items={ countries } />,
+  //<DynamicSearch url="/items" pollInterval={2000} items={ countries }/>,
+  React.createElement(DynamicSearch, {url: "/items", pollInterval: 2000}),
   document.getElementById('main')
 );
 },{}]},{},[1]);
