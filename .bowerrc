@@ -6,5 +6,6 @@
       "http://registry.bower.io",
       "http://bower.herokuapp.com"
     ]
-  }
+  },
+  "resolvers": [ "bower-npm-resolver" ]
 }
