@@ -1,4 +1,4 @@
-var MySuperDIV = React.createClass({
+module.exports = React.createClass({
     getInitialState: function(){
         return { myName: "SuperDIV" };
     },
@@ -18,14 +18,19 @@ var MySuperDIV = React.createClass({
         return (
             <div>
                 <input type="text" value={ this.state.myName } onChange={ this.handleChange } />
+                <table border="0">
+                    <tr><th>Header</th></tr>
+                    <tr><th>Data</th></tr>
+                    <tr><th> <input type="button" value="RUN!!!" /> </th></tr>
+                </table>
             </div>
         )
     }
 });
 
-ReactDOM.render(
-<MySuperDIV data={'developer'} />,
-document.getElementById('here')
-);
+//module.exports = MySuperDIV;
 
-
+//ReactDOM.render(
+//<MySuperDIV data={'developer'} />,
+//document.getElementById('here')
+//);

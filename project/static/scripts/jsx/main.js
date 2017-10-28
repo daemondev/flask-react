@@ -1,3 +1,7 @@
+//import {MiDIV} from './util.js';
+//import MySuperDIV from './util.js';
+var MiDiv = require('./util.js');
+
 var DynamicSearch = React.createClass({
 
   // sets initial state
@@ -43,6 +47,7 @@ var DynamicSearch = React.createClass({
 
     return (
       <div>
+      <MiDiv data={'developer'} />
         <input type="text" value={this.state.searchString} onChange={this.handleChange} placeholder="Search!" />
         <ul>
           { countries.map(function(country){ return <li>{country.name} | {country.total}</li> }) }
@@ -70,3 +75,8 @@ ReactDOM.render(
   <DynamicSearch url="/items" pollInterval={2000} />,
   document.getElementById('main')
 );
+
+//https://medium.com/@thejasonfile/a-simple-intro-to-javascript-imports-and-exports-389dd53c3fac
+//https://developer.mozilla.org/es/docs/Web/JavaScript/Referencia/Sentencias/export
+//https://reactcommunity.org/react-tabs/example/
+//https://www.codementor.io/tamizhvendan/beginner-guide-setup-reactjs-environment-npm-babel-6-webpack-du107r9zr
